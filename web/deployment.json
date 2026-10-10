@@ -1,0 +1,11 @@
+{
+  "deployed": false,
+  "chainId": 11155111,
+  "chainName": "Sepolia",
+  "proofCanvasAddress": null,
+  "explorer": "https://sepolia.etherscan.io",
+  "imdLaunchId": null,
+  "nativeOracleSigner": null,
+  "verifiedSourceCommit": null,
+  "mintingEnabled": false
+}

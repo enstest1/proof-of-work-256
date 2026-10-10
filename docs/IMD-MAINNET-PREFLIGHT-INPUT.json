@@ -1,0 +1,16 @@
+{
+  "action": "launch.open",
+  "input": {
+    "objective": "Deploy the existing tested PROOF//OF//WORK: THE 256 project, an ERC-721 (symbol PROOF) generative artwork and verifiable-work protocol on Robinhood Chain mainnet (chain 4663). Exactly 256 Genesis ERC-721 tokens with one free mint per wallet while mintOpen; 16 maximum optional Monument NFTs assembled from four different-archetype owned canvases after six qualifying collaboration edges. The NFT contract must use authentic IdentityMD Oracle v2 signed attestations with approved question hashes, minimum panel/quorum checks, and protection against replay, expiration, ownership transfers, and signature re-use. Use the supplied audited-and-tested source; do not invent or launch any fungible ERC-20 token, liquidity pool, trading fees, or pool allocation. Owner can configure signer, approve/revoke oracle questions, and open/close minting. Minting MUST remain closed after deployment, no owner reserve; permanently seal legacy signer path. No upgradeable proxies. Include reproducible Foundry tests, ABI, verified contract source and a public website connected to the actual chain; mark simulated activity unmistakably until first genuine IMD receipt. Deployment should retain source provenance and provide contract address, transaction hash and IMD launch ID for hackathon evidence.",
+    "shape": "chain",
+    "steps": [
+      {"skill": "build-contract-project"},
+      {"skill": "write-foundry-tests", "paths": ["test"]},
+      {"skill": "adversarial-review"}
+    ],
+    "onchain": "evm_contracts",
+    "chainId": 4663,
+    "github": true,
+    "contracts": ["ProofCanvas", "IMDOracleV2"]
+  }
+}

@@ -1,0 +1,19 @@
+[
+  {
+    "name": "Genesis 256 NFT-only IMD launch",
+    "action": "launch.open",
+    "input": {
+      "objective": "Launch an ERC721 NFT collection named PROOF//OF//WORK: THE 256, symbol PROOF. Supply is exactly 256 Genesis NFTs; separately at most 16 Monument NFTs after qualified collaboration. This is not an ERC20 or fungible token. Anyone can mint maximum one Genesis per wallet while mintOpen; owner may toggle mintOpen; permanent frozen collectibles cannot evolve, verified IMD Oracle v2 signatures alone grant evolution; no upgrade, no pausing of transfers, no pooled liquidity, no owner-minted reserves. Provide full Foundry tests, source and adversarial review on Sepolia.",
+      "shape": "chain",
+      "steps": [
+        {"skill":"build-contract-project"},
+        {"skill":"write-foundry-tests","paths":["test"]},
+        {"skill":"adversarial-review"}
+      ],
+      "onchain": "evm_contracts",
+      "chainId": 11155111,
+      "github": true,
+      "contracts": ["ProofCanvas", "IMDOracleV2"]
+    }
+  }
+]

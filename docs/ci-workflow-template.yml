@@ -1,0 +1,21 @@
+name: Solidity build and tests
+on:
+  push:
+  pull_request:
+jobs:
+  solidity:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: foundry-rs/foundry-toolchain@v1
+        with:
+          version: v1.8.5
+      - name: Compile and test
+        working-directory: contracts
+        run: |
+          forge install --no-commit OpenZeppelin/openzeppelin-contracts@dbb6104ce834628e473d2173bbc9d47f81a9eec3
+          forge install --no-commit foundry-rs/forge-std@0258fe875e1d8e207c1eb7175e542ea32356773c
+          forge build --sizes
+          forge test --fuzz-runs 1024 --summary

@@ -1,0 +1,29 @@
+{
+  "checkedDate": "2026-10-07",
+  "checksRunAgainst": "https://api.imd.fun/requests/check",
+  "paymentMade": false,
+  "launchCapabilities": {
+    "availableForEvmContracts": [
+      { "chainId": 11155111, "name": "Sepolia" },
+      { "chainId": 1, "name": "Ethereum mainnet" },
+      { "chainId": 4663, "name": "Robinhood Chain" }
+    ],
+    "notListed": ["Base"]
+  },
+  "firstLaunchOpenNFTOnly": {
+    "blocked": true,
+    "blockingCodes": ["unplannable_steps", "missing_fact:token_name", "missing_fact:token_symbol", "missing_fact:token_supply"]
+  },
+  "workflowOpenNFTOnly": {
+    "blocked": true,
+    "blockingCodes": ["evaluation_unavailable", "missing_fact:token_name", "missing_fact:token_symbol"]
+  },
+  "finalLaunchOpenRefined": {
+    "blocked": false,
+    "blockers": [],
+    "kind": "contracts",
+    "suggestions": ["vague"],
+    "plan": ["build-contract-project", "write-foundry-tests", "launch-manifest", "4x audit-specialist", "audit-judge", "Deploy on Sepolia"],
+    "meaning": "The current free IMD launch admission screen approves the NFT-only project shape. It does not imply the source contracts compile or that paid deployment will succeed."
+  }
+}
