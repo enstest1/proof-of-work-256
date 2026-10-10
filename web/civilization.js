@@ -59,6 +59,13 @@ function init(doc){
  host.addEventListener('click',e=>{const node=e.target.closest('[data-canvas-id]');if(node)select(Number(node.dataset.canvasId));});
  host.addEventListener('keydown',e=>{const node=e.target.closest('[data-canvas-id]');if(node&&(e.key==='Enter'||e.key===' ')){e.preventDefault();select(+node.dataset.canvasId);}});
  root.ProofCivilization=Object.freeze({isActive:true,selectCanvas:select,world,eras,cultures});
+ const network=el('civilTestnetStatus');
+ if(network)fetch('/api/testnet',{signal:AbortSignal.timeout(9000),cache:'no-store'})
+   .then(r=>{if(!r.ok)throw Error('testnet unavailable');return r.json();})
+   .then(d=>{network.textContent=d.chainId===46630&&d.networkVerified===true?
+     'ROBINHOOD TESTNET CONNECTED / READ-ONLY / NO NFT CONTRACT DEPLOYED':
+     'TESTNET UNVERIFIED · NO CONTRACT DEPLOYED';})
+   .catch(()=>{network.textContent='TESTNET RPC UNAVAILABLE · NO CONTRACT DEPLOYED';});
  redraw();
 }
 const api=Object.freeze({cultures,eras,nodes,edges,world,render});
