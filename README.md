@@ -4,9 +4,9 @@
 
 A collector-first generative art experiment with a Solidity contract for 256 Genesis canvases, attested work receipts, collaboration edges, irreversible freeze, and a 16-Monument ceiling. Includes a responsive self-contained gallery prototype and a Foundry test suite.
 
-**Public collector preview:** https://collector-gallery-production.up.railway.app/ (simulated collection; contract and mint still inactive).
+**Solidity CI:** https://github.com/enstest1/proof-of-work-256/actions/runs/38025530663 (passing public Foundry build/test run).\n\n**Public collector preview:** https://collector-gallery-production.up.railway.app/ (simulated collection; contract and mint still inactive).
 
-**Repository:** https://github.com/enstest1/proof-of-work-256 (pending first push).
+**Repository:** https://github.com/enstest1/proof-of-work-256 (public source published; CI passing).
 
 **Hackathon submission guide:** [docs/HACKATHON-SUBMISSION.md](docs/HACKATHON-SUBMISSION.md).
 
