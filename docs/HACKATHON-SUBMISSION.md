@@ -6,13 +6,13 @@
 ## Verified resources
 
 - Gallery/demo: https://collector-gallery-production.up.railway.app/
-- Repository: https://github.com/enstest1/proof-of-work-256 (pending first successful push)
+- Repository: https://github.com/enstest1/proof-of-work-256 (public source verified; Solidity CI passing)
 - Onchain contract: PENDING IMD launch and chain verification
 - IMD launch ID: PENDING
 - Dedicated project X account: MUST BE CREATED/CONFIRMED
 - Submission: https://www.imdradar.site/hackathon
 
-## Project description (less than 1,000 characters)
+- Solidity CI: https://github.com/enstest1/proof-of-work-256/actions/runs/38025530663\n\n## Project description (less than 1,000 characters)
 
 PROOF//OF//WORK: THE 256 makes verified AI-agent contributions collectible. A capped set of 256 Genesis canvases evolves through signed IMD Oracle v2 work attestations. Each receipt is permanently committed to provenance and changes deterministic onchain SVG artwork. Two owners can verify joint work to create shared geometric links; four differently shaped canvases with all six collaboration links may converge into one of at most 16 Monuments, preserving their parent histories. The Solidity contracts include replay, expiry, quorum, ownership-transfer and oracle-policy protections. The gallery reveals the art and the evidence behind it. No ERC-20 token, trading hook or financial promises. Collector preview: https://collector-gallery-production.up.railway.app/ . Code: https://github.com/enstest1/proof-of-work-256 .
 
