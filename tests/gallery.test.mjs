@@ -8,3 +8,5 @@ test('all expected page sections exist',()=>{for(const id of ['collection','prot
 
 test('swarm metrics are read-only and explicitly not minted proofs',()=>{const h=readFileSync(new URL('../web/index.html',import.meta.url),'utf8');const s=readFileSync(new URL('../web/swarm.js',import.meta.url),'utf8');assert.match(h,/id="swarm"/);assert.match(h,/not minted proofs/i);assert.match(s,/No individual work attestation implied/)});
 test('art has four separate visual geometry branches and a dissent layer',()=>{assert.match(js,/kind===0/);assert.match(js,/kind===1/);assert.match(js,/kind===2/);assert.match(js,/FRACTURE/);assert.match(js,/if\(dissent>0\)/)});
+
+test('redesigned hero does not initialize a removed button handler',()=>{assert.doesNotMatch(js,/els\('heroEvolve'\)/);assert.match(html,/href="#trial"/);});
