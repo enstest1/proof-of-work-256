@@ -1,0 +1,32 @@
+/* Civilization / flagships / roadmap */
+.civil-section{background:radial-gradient(ellipse at 50% 35%,#151c22,#0a0d12 78%)}
+.civil-header{display:flex;justify-content:space-between;gap:28px;align-items:end}.civil-header p{max-width:720px;color:#b6bec7;line-height:1.8}
+.civil-eyebrow,.civil-meta,.civil-worldbar,.civil-tile small,.civil-faction small,.civil-milestone small,.civil-milestone span{font:10px 'DM Mono',monospace;letter-spacing:1.2px;color:#cdb787}
+.civil-flagships{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:35px 0}
+.civil-flagships article{padding:26px;min-height:235px;display:flex;flex-direction:column;background:#10171e;border:1px solid #404a53}
+.civil-flagships article:last-child{background:linear-gradient(145deg,#1f211c,#11151b);border-color:#857451}
+.civil-flagships h3{font-size:clamp(24px,2.5vw,35px);line-height:1.17;margin:22px 0 8px;letter-spacing:-1px}
+.civil-flagships p{color:#b8bfc8;font-size:13px;line-height:1.7}
+.civil-flagships a{font:11px 'DM Mono',monospace;color:#e5c68f;text-decoration:underline;margin-top:auto;padding-top:14px}
+.civil-shell{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(280px,.8fr);border:1px solid #414851;background:#0b0f15}
+.civil-atlas{min-width:0;padding:17px;border-right:1px solid #414851}
+.civil-worldbar{display:flex;gap:15px;justify-content:space-between;flex-wrap:wrap;color:#9ba6b3;padding:11px 0}
+.civil-atlas #commonsCanvas{aspect-ratio:1;background:#0a0d12;width:100%;border:1px solid #242d38;min-height:0}
+.civilization-svg{display:block;width:100%;height:100%}.civil-node{cursor:pointer}.civil-node:hover circle:first-child{stroke:#fff}.civil-node:focus-visible circle{stroke:#fff;stroke-width:2px}
+.civil-sidebar{display:flex;flex-direction:column;gap:18px;padding:26px}
+.civil-sidebar>strong{font-size:clamp(25px,3vw,46px);letter-spacing:-2px}
+.civil-sidebar p{color:#b8c0c9;font-size:13px;line-height:1.7}
+.civil-stats{display:grid;grid-template-columns:1fr 1fr;gap:12px}.civil-tile{padding:16px;border:1px solid #3f4852;background:#151a20;display:grid;gap:10px}.civil-tile strong{font-size:30px;font-weight:500;color:#e7d0a2}
+.civil-sidebar label{font:10px 'DM Mono',monospace;letter-spacing:1.2px;color:#c6b18b}#civilEra{accent-color:#d8b986;width:100%;cursor:pointer}
+.civil-buttons{display:flex;gap:8px}.civil-buttons button{flex:1;padding:11px 8px}.civil-sidebar select{width:100%;padding:13px;background:#10151c;border:1px solid #525b66;color:#e5e0d7}
+.civil-selected{margin-top:auto;border-top:1px solid #3d4753;padding-top:20px}.civil-selected strong{display:block;margin:14px 0;font-size:18px}.civil-selected a{color:#e4c895;font-size:11px;text-decoration:underline}
+.civil-factions{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:#39414d;border:1px solid #39414d;margin:24px 0}
+.civil-faction{background:#12171e;min-height:185px;padding:23px}.civil-faction:nth-child(1){border-top:3px solid #d9bf8d}.civil-faction:nth-child(2){border-top:3px solid #98bed6}.civil-faction:nth-child(3){border-top:3px solid #d1d6cc}.civil-faction:nth-child(4){border-top:3px solid #d39399}
+.civil-faction h3{letter-spacing:2px;margin:27px 0 10px}.civil-faction p{font-size:12px;line-height:1.6;color:#b3bbc5}
+.civil-roadmap{background:#11151b}.civil-roadmap-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:1px;background:#3a444d;border:1px solid #3a444d;margin-top:35px}
+.civil-milestone{background:#10141a;padding:22px;min-height:265px;display:flex;flex-direction:column}.civil-milestone h3{margin:32px 0 10px;font-size:18px;letter-spacing:-.4px}.civil-milestone p{font-size:12px;line-height:1.7;color:#adb7c3}.civil-milestone span{margin-top:auto;padding-top:16px;color:#ccb481}
+.civil-roadmap-warning{color:#aeb8c3;font-size:12px;line-height:1.8;border-top:1px solid #48515b;padding-top:25px;margin-top:25px}
+.civil-roadmap-warning a{color:#e2c18e;text-decoration:underline}
+@media(max-width:1050px){.civil-shell{grid-template-columns:1fr}.civil-atlas{border-right:0;border-bottom:1px solid #414851}.civil-roadmap-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:720px){.civil-header{display:block}.civil-flagships{grid-template-columns:1fr}.civil-factions{grid-template-columns:repeat(2,1fr)}.civil-roadmap-grid{grid-template-columns:repeat(2,1fr)}.civil-sidebar{padding:22px}.civil-flagships article{min-height:190px}.civil-atlas{padding:9px}}
+@media(max-width:460px){.civil-roadmap-grid{grid-template-columns:1fr}.civil-milestone{min-height:175px}}
