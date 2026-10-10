@@ -45,3 +45,15 @@ Radar states that if a contract address is supplied, prizes are paid to the wall
 - **Local execution:** Both contracts deployed successfully to a fake-money Anvil simulator configured to chain ID 4663. The addresses are local-development only, NEVER submission addresses.
 - **Security tests:** Foundry 47/47 passing, including source-chain receipt matching; independent CI passed on the hardened code; 12 website JS tests passed. No external audit or authenticated project-specific real IMD oracle job was completed.
 - **Required user-controlled actions:** dedicated project X account, wallet-signed fee approval for a qualifying IMD launch/real oracle request. Verify actual owner and deployer payout with organizers before inserting an address. Submit only after genuine IMD launch proof exists.
+
+## V5 public demo and genuine IMD job requirements (October 9)
+
+The gallery now demonstrates **PROOF//TRIAL** (two proposed futures), **Cinematic Birth** (five simulated phases), **PROOF//X-RAY** (click marks for role/evidence status), **Archive** (reproducible staged preview), and **Commons** (256-node concept artwork). It labels proposals and generated examples as demos. The upstream native IMD proof pipeline has NOT completed for this collection.
+
+The first realistic IMD 5-step DAG was validated by free `job.open` preflight and yielded a **quoted-only** fee of 0.5 IMD. No job order was paid, accepted, or executed. Do not mention IMD worker seat IDs, task acceptance, task reviews, or oracle confirmation as existing for PROOF//OF//WORK until public accepted work records and an onchain native receipt can substantiate them. The trial remains a conceptual experience until that gate.
+
+**Demo link:** https://collector-gallery-production.up.railway.app/?canvas=42#trial
+
+**Project source:** https://github.com/enstest1/proof-of-work-256
+
+**Before final Radar entry:** obtain a dedicated project X handle; complete qualifying IMD-paid build or launch, verify actual contract, owner/deployer and payout path; complete an independent security review; obtain a real native attestation/accepted Swarm Score; update the site and proof explorer from actual chain state. No wallet secrets go into GitHub, Railway, or chat.
