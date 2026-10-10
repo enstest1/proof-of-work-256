@@ -18,3 +18,9 @@ jobs:
           forge install --no-commit foundry-rs/forge-std@0258fe875e1d8e207c1eb7175e542ea32356773c
           forge build --sizes
           forge test --fuzz-runs 1024 --summary
+      - name: Verify collector experience and provenance guardrails
+        run: |
+          node --test tests/*.test.mjs
+          node --check web/app.js
+          node --check web/experience.js
+          node --check scripts/verify-swarm-score.mjs
