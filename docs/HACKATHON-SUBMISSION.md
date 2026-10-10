@@ -31,3 +31,7 @@ PROOF//OF//WORK: THE 256 makes verified AI-agent contributions collectible. A ca
 ## Critical disclosure
 
 The Railway site is a gallery DEMO, not an onchain mint. Its SVG preview is not byte-for-byte identical with `ProofCanvas.svgOf`, and Genesis DNA allocation is deterministic by token ID, not unbiased randomness. A full public collector mint requires art parity, fairness review, security review and an authentic deployment-bound IMD oracle test. Unit/fuzz tests alone do not provide an independent audit.
+
+## Prize-deployer address caveat (must resolve before entering contract)
+
+Radar states that if a contract address is supplied, prizes are paid to the wallet that **deployed the contract**. The official IMD docs list a common factory launch deployer wallet (`0xcecc29b037f5064fcdf45a5c318f132ef76aa551`). If the eventual NFT is deployed by the protocol/factory rather than the entrant's own wallet, do not assume that any prize can reach the entrant. Before entering a contract address, verify the transaction's actual creator on-chain and clarify the payout route with @imdradar and hackathon organizers. Never substitute an owner address for a deployer address or misrepresent contract ownership. The form permits leaving the contract address blank.
