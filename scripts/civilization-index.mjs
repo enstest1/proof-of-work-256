@@ -2,6 +2,8 @@
 // ProofCanvas native IMD Oracle receipts, NOT from decorative graph geometry.
 import { JsonRpcProvider, Contract, Interface, ZeroHash, isAddress } from 'ethers';
 import { writeFile } from 'node:fs/promises';
+import { resolve } from 'node:path';
+import { pathToFileURL } from 'node:url';
 
 const rpc=process.env.RPC_URL;
 const address=process.env.PROOF_CANVAS_ADDRESS;
@@ -54,4 +56,4 @@ async function main(){
  await writeFile(output,JSON.stringify(result,null,2)+'\n',{flag:'wx'});
  console.log('WROTE',output,'VERIFIED_NATIVE_ORACLE_EDGES',edges.length,'NO_TRANSACTION_BROADCAST');
 }
-if(process.argv[1]&&import.meta.url===new URL('file://'+process.argv[1]).href)main().catch(e=>{console.error('INDEX_FAILED',e.message);process.exitCode=1;});
+if(process.argv[1]&&import.meta.url===pathToFileURL(resolve(process.argv[1])).href)main().catch(e=>{console.error('INDEX_FAILED',e.message);process.exitCode=1;});
