@@ -12,9 +12,11 @@
 - Dedicated project X account: MUST BE CREATED/CONFIRMED
 - Submission: https://www.imdradar.site/hackathon
 
-- Solidity CI: https://github.com/enstest1/proof-of-work-256/actions/runs/38025530663\n\n## Project description (less than 1,000 characters)
+- Solidity CI: https://github.com/enstest1/proof-of-work-256/actions/runs/38027057499
 
-PROOF//OF//WORK: THE 256 makes verified AI-agent contributions collectible. A capped set of 256 Genesis canvases evolves through signed IMD Oracle v2 work attestations. Each receipt is permanently committed to provenance and changes deterministic onchain SVG artwork. Two owners can verify joint work to create shared geometric links; four differently shaped canvases with all six collaboration links may converge into one of at most 16 Monuments, preserving their parent histories. The Solidity contracts include replay, expiry, quorum, ownership-transfer and oracle-policy protections. The gallery reveals the art and the evidence behind it. No ERC-20 token, trading hook or financial promises. Collector preview: https://collector-gallery-production.up.railway.app/ . Code: https://github.com/enstest1/proof-of-work-256 .
+## Project description (less than 1,000 characters)
+
+PROOF//OF//WORK: THE 256 is an ERC-721 generative art protocol built around verifiable AI-agent contribution histories. A capped set of 256 Genesis artworks uses four mathematical visual grammars: Orbit, Vessel, Lattice and Fracture. A Swarm Score precommits four role-specific IMD agent and work references; finalization requires an accepted native IMD Oracle v2 signature for the same evidence root. Signed panel disagreement changes the art. Verified collaboration can connect two canvases, with a maximum of 16 possible Monuments. Public source and 47 passing Solidity tests: https://github.com/enstest1/proof-of-work-256 . Collector preview: https://collector-gallery-production.up.railway.app/ .
 
 **DO NOT POST this as fully launched until:** source is public, real IMD launch accepted, contract verified and working, dedicated X account exists, project evidence matches chain state.
 
@@ -35,3 +37,11 @@ The Railway site is a gallery DEMO, not an onchain mint. Its SVG preview is not 
 ## Prize-deployer address caveat (must resolve before entering contract)
 
 Radar states that if a contract address is supplied, prizes are paid to the wallet that **deployed the contract**. The official IMD docs list a common factory launch deployer wallet (`0xcecc29b037f5064fcdf45a5c318f132ef76aa551`). If the eventual NFT is deployed by the protocol/factory rather than the entrant's own wallet, do not assume that any prize can reach the entrant. Before entering a contract address, verify the transaction's actual creator on-chain and clarify the payout route with @imdradar and hackathon organizers. Never substitute an owner address for a deployer address or misrepresent contract ownership. The form permits leaving the contract address blank.
+
+## October 9 engineering gate verification
+
+- **Main source import:** IMD `requests/import` returned `ok: true` for the root Foundry source commit `9ce4f62bf5d14e5801a2bcbe0289bc7ccd278b7c` (before subsequent documentation-only commits).
+- **Launch pricing and policy:** A real unpaid `requests/quote` returned `quoted` at `0.5 IMD` for an `evm_contracts` launch on Robinhood Chain 4663 with a mandatory `audit-imported-code` first step. This is **not** a paid/admitted or completed launch.
+- **Local execution:** Both contracts deployed successfully to a fake-money Anvil simulator configured to chain ID 4663. The addresses are local-development only, NEVER submission addresses.
+- **Security tests:** Foundry 47/47 passing, including source-chain receipt matching; independent CI passed on the hardened code; 12 website JS tests passed. No external audit or authenticated project-specific real IMD oracle job was completed.
+- **Required user-controlled actions:** dedicated project X account, wallet-signed fee approval for a qualifying IMD launch/real oracle request. Verify actual owner and deployer payout with organizers before inserting an address. Submit only after genuine IMD launch proof exists.
