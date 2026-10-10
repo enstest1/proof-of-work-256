@@ -12,6 +12,8 @@ A collector-first generative art experiment with a Solidity contract for 256 Gen
 
 **Hackathon submission guide:** [docs/HACKATHON-SUBMISSION.md](docs/HACKATHON-SUBMISSION.md).
 
+**Future research concepts:** [Seven-concept roadmap and implementation status](docs/CONCEPT-ROADMAP.md) — Gauntlet, Causality, Witness, Ghost Timelines, Symbiosis, Last Trial, Civilization.
+
 ## PROOF//TRIAL v5 — live collector experience (October 9, 2026)
 
 **Production gallery:** https://collector-gallery-production.up.railway.app/?canvas=42#trial — working two-future comparison, five-chapter cinematic Birth replay, interactive mark-to-role X-Ray, historical concept scrubber, exportable vector SVG, shareable canvas link and 256-node Commons. The website explicitly marks all imagined agent outcomes, provenance and connections **SIMULATED/UNVERIFIED**. Actual IMD network health is real public telemetry and is not evidence of work attributed to our NFTs.
