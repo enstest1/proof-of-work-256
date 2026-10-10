@@ -30,6 +30,14 @@ The new public atlas has five simulated eras, deterministic procedural world geo
 
 **Robinhood testnet 46630:** real read-only RPC checks and a non-broadcast Foundry deployment/fork smoke are described in [testnet readiness](docs/TESTNET-READINESS.md). A future authentic graph indexer lives in `scripts/civilization-index.mjs` and refuses to invent links. Wallet-funded deployment and a real IMD oracle receipt remain gates to a fully live civilization. The production manifest remains `deployed:false`, `mintingEnabled:false`.
 
+## MATH ATELIER — generative art and social exports
+
+**Live:** https://collector-gallery-production.up.railway.app/#atelier
+
+Five independent mathematical art grammars (ORBIT, VESSEL, LATTICE, FRACTURE, CIVILIZATION) are generated from deterministic artwork seed inputs. The preview studio exports a vector SVG, a 2160×2700 social PNG, a clean ControlNet line guide and a suggested SDXL prompt. The engine runs in the browser with no keys, model API calls or minting. Promotional pieces are explicitly labeled not minted or IMD-verified.
+
+**Implementation and optional AI-model compatibility:** [docs/MATH-ATELIER.md](docs/MATH-ATELIER.md). The code does **not** bundle or execute SDXL or ControlNet; external image-polishing workflows require compatible models and their licenses.
+
 ## Exact project status
 
 | Component | Status |
