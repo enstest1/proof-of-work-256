@@ -8,3 +8,6 @@ broadcast/
 !.env.example
 *.key
 .DS_Store
+
+lib/
+

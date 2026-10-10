@@ -78,6 +78,8 @@ contract ProofCanvas is ERC721, Ownable2Step {
         uint16 agreed;
     }
     mapping(bytes32 => NativeReceipt) public nativeReceipts;
+    // Source chain authenticated by the accepted v2 attestation.
+    mapping(bytes32 => uint256) public nativeReceiptSourceChainId;
     // Signed panel disagreement, not subjective conflict between agents.
     mapping(uint256 => uint16) public lastPanelSize;
     mapping(uint256 => uint16) public lastPanelAgreed;
@@ -255,6 +257,7 @@ contract ProofCanvas is ERC721, Ownable2Step {
         if (IMDOracleV2.recover(a, signature) != oracleSigner) revert OracleSignatureInvalid();
         claim.used = true;
         consumedOracleRequests[a.requestId] = true;
+        nativeReceiptSourceChainId[claim.workId] = claim.sourceChainId;
         nativeReceipts[claim.workId] = NativeReceipt({
             canvasA: claim.canvasId, canvasB: 0, evidenceHash: claim.evidenceHash,
             questionHash: claim.questionHash, requestId: a.requestId, issuedAt: a.issuedAt,
@@ -309,6 +312,7 @@ contract ProofCanvas is ERC721, Ownable2Step {
         c.used = true;
         consumedWork[c.workId] = true;
         consumedOracleRequests[a.requestId] = true;
+        nativeReceiptSourceChainId[c.workId] = c.sourceChainId;
         nativeReceipts[c.workId] = NativeReceipt({
             canvasA: c.a, canvasB: c.b, evidenceHash: c.evidenceHash,
             questionHash: c.questionHash, requestId: a.requestId, issuedAt: a.issuedAt,

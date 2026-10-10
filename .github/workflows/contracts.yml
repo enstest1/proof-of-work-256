@@ -13,7 +13,6 @@ jobs:
         with:
           version: v1.8.5
       - name: Compile and test
-        working-directory: contracts
         run: |
           forge install --no-commit OpenZeppelin/openzeppelin-contracts@dbb6104ce834628e473d2173bbc9d47f81a9eec3
           forge install --no-commit foundry-rs/forge-std@0258fe875e1d8e207c1eb7175e542ea32356773c
