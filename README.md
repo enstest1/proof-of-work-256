@@ -4,7 +4,7 @@
 
 A collector-first generative art experiment with a Solidity contract for 256 Genesis canvases, attested work receipts, collaboration edges, irreversible freeze, and a 16-Monument ceiling. Includes a responsive self-contained gallery prototype and a Foundry test suite.
 
-**Public GitHub Actions run:** https://github.com/enstest1/proof-of-work-256/actions/runs/38025530663 (passing build and contract tests).
+**Public GitHub Actions run:** https://github.com/enstest1/proof-of-work-256/actions/runs/38027057499 (passing build and contract tests).
 
 **Public collector preview:** https://collector-gallery-production.up.railway.app/ (simulated collection; contract and mint still inactive).
 
@@ -18,20 +18,20 @@ A collector-first generative art experiment with a Solidity contract for 256 Gen
 |---|---|
 | Collector website, 256-piece generative SVG preview, responsive layouts, filters, interactive canvas details | Implemented; browser demo uses mock data |
 | Wallet connection | EIP-1193 account connect only; no live minting |
-| ERC-721 ProofCanvas contract | Compiles with Solidity 0.8.24; 40/40 Foundry tests passed, independent audit still required |
+| ERC-721 ProofCanvas contract | Compiles with Solidity 0.8.24; 47/47 Foundry tests passed, independent audit still required |
 | One-mint-per-wallet and fixed Genesis cap | Passing local Foundry tests; not deployed onchain |
 | Signed work receipts with EIP-712 domain and replay protections | Legacy path disabled by default; native IMD v2 pathway tested with public signed fixture |
 | Signed collaboration, freeze, four-parent monuments | Local integration and adversarial tests passing |
 | Native IMD oracle signature validation | Public real issued IMD v2 fixture verified via ethers.js and Solidity test; project-specific paid consumer path still unverified |
 | Real live agent jobs, cryptographic evidence manifests | NOT integrated |
-| IMD API free launch preflight | Refined NFT-only launch input passed with zero blockers; no quote/payment/deploy attempted |
-| IMD protocol launch, deployed contract, website production URL | NOT performed |
+| IMD API free launch preflight | Refined NFT-only launch input passed with zero blockers; unpaid launch quote accepted; no payment or public deployment |
+| IMD protocol mainnet launch and minted NFT | NOT performed; the public Railway gallery remains a demo |
 | Dedicated X account and Radar submission | NOT performed |
 | Solidity audits | Local lint and adversarial tests performed; NO independent security audit |
 
 **Do not market simulated work events as verified real agent work.** The web demo labels the distinction.
 
-## Run the collector gallery
+**SWARM//DNA v2:** Root Solidity sources are in `src/`, tests in `test/`, and metadata-free build in the repository-root `foundry.toml`. Final native proof registry and signed dissent renderer verified in the public CI run above.\n\n## Run the collector gallery
 
 You can open `web/index.html` directly in a desktop browser. For a local server:
 
@@ -48,7 +48,6 @@ This build has no browser-side dependency on wallets or remote databases; the op
 ```bash
 node --test tests/*.test.mjs
 # To compile and test the smart contracts, install Foundry first:
-cd contracts
 forge install --no-commit OpenZeppelin/openzeppelin-contracts@dbb6104ce834628e473d2173bbc9d47f81a9eec3
 forge install --no-commit foundry-rs/forge-std@0258fe875e1d8e207c1eb7175e542ea32356773c
 forge test --fuzz-runs 1024 --summary
@@ -98,4 +97,4 @@ This **does not mean mainnet launch ready**: the user-facing gallery remains a s
 
 Four completely different deterministic art grammars—Orbit, Vessel, Lattice and Fracture—replace the original mostly radial preview. The Solidity renderer also uses four distinct forms and renders panel disagreement from the signed panel fields. The website has read-only public IMD swarm telemetry, never presented as individual proof. No live NFT or IMD-paid job has been claimed.
 
-To test locally: \`cd contracts && forge test --fuzz-runs 1024\`. The original passing version is saved at \`backup/pre-swarm-dna\`. Release requires real deployed-contract-bound IMD receipt, security review and actual launch.
+To test locally: \`forge test --fuzz-runs 1024\`. The original passing version is saved at \`backup/pre-swarm-dna\`. Release requires real deployed-contract-bound IMD receipt, security review and actual launch.
