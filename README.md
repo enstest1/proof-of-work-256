@@ -4,9 +4,11 @@
 
 A collector-first generative art experiment with a Solidity contract for 256 Genesis canvases, attested work receipts, collaboration edges, irreversible freeze, and a 16-Monument ceiling. Includes a responsive self-contained gallery prototype and a Foundry test suite.
 
-**Solidity CI:** https://github.com/enstest1/proof-of-work-256/actions/runs/38025530663 (passing public Foundry build/test run).\n\n**Public collector preview:** https://collector-gallery-production.up.railway.app/ (simulated collection; contract and mint still inactive).
+**Public GitHub Actions run:** https://github.com/enstest1/proof-of-work-256/actions/runs/38025530663 (passing build and contract tests).
 
-**Repository:** https://github.com/enstest1/proof-of-work-256 (public source published; CI passing).
+**Public collector preview:** https://collector-gallery-production.up.railway.app/ (simulated collection; contract and mint still inactive).
+
+**Repository:** https://github.com/enstest1/proof-of-work-256 (published; public GitHub Actions tests passing).
 
 **Hackathon submission guide:** [docs/HACKATHON-SUBMISSION.md](docs/HACKATHON-SUBMISSION.md).
 
@@ -88,3 +90,12 @@ Do not flip `web/deployment.json` to `deployed:true` until an audited contract i
 Foundry 1.8.5 with Solidity 0.8.24 compiled successfully and **40/40 tests passed** (five fuzz cases with 1,024 iterations each). JavaScript tests passed **10/10**. EIP-712 signing format was checked against one **genuine public IMD Oracle v2 attestation**. Ownership-transfer round trips are protected through `ownershipEpoch`, registration requires owner-approved questions, and irreversible disabling of the legacy attestor is available.
 
 This **does not mean mainnet launch ready**: the user-facing gallery remains a simulation, no deployed consumer or paid IMD request exists, source remains unaudited by an independent party, and no chain launch or hackathon submission has been performed. See [`docs/RELEASE-VERIFICATION-2026-10-08.md`](docs/RELEASE-VERIFICATION-2026-10-08.md).
+
+
+## SWARM//DNA v2 (experimental branch)
+
+\`feat/swarm-dna\` adds a dedicated 'SwarmScoreRegistry' that precommits four role-specific IMD seat IDs and work-record hashes, binds them to a deterministic canonical root, and will finalize only after 'ProofCanvas' has accepted a native IMD v2 oracle attestation for that exact evidence root. The four-seat diversity assertion only checks distinct submitted hashes; it is **not** proof that participants are independent or that an oracle independently checked each role. The project's question-policy and public manifest must provide that assurance.
+
+Four completely different deterministic art grammars—Orbit, Vessel, Lattice and Fracture—replace the original mostly radial preview. The Solidity renderer also uses four distinct forms and renders panel disagreement from the signed panel fields. The website has read-only public IMD swarm telemetry, never presented as individual proof. No live NFT or IMD-paid job has been claimed.
+
+To test locally: \`cd contracts && forge test --fuzz-runs 1024\`. The original passing version is saved at \`backup/pre-swarm-dna\`. Release requires real deployed-contract-bound IMD receipt, security review and actual launch.

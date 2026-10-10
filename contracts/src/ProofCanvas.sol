@@ -63,6 +63,24 @@ contract ProofCanvas is ERC721, Ownable2Step {
     }
     mapping(bytes32 => PendingOracleClaim) public pendingOracleClaims;
     mapping(bytes32 => bool) public consumedOracleRequests;
+
+    // Authenticated acceptance receipts. Unlike consumedWork, these are written ONLY
+    // after a native IMD OracleAttestation v2 signature is recovered successfully.
+    struct NativeReceipt {
+        uint256 canvasA;
+        uint256 canvasB;
+        bytes32 evidenceHash;
+        bytes32 questionHash;
+        bytes32 requestId;
+        uint64 issuedAt;
+        uint16 panelSize;
+        uint16 quorum;
+        uint16 agreed;
+    }
+    mapping(bytes32 => NativeReceipt) public nativeReceipts;
+    // Signed panel disagreement, not subjective conflict between agents.
+    mapping(uint256 => uint16) public lastPanelSize;
+    mapping(uint256 => uint16) public lastPanelAgreed;
     struct PendingCollaboration {
         uint256 a;
         uint256 b;
@@ -92,6 +110,7 @@ contract ProofCanvas is ERC721, Ownable2Step {
     event OracleSignerChanged(address indexed previousSigner, address indexed newSigner);
     event OracleClaimRegistered(bytes32 indexed claimId, uint256 indexed canvasId, bytes32 indexed workId, bytes32 questionHash);
     event OracleReceiptVerified(bytes32 indexed claimId, bytes32 indexed oracleRequestId, uint16 agreed, uint16 quorum);
+    event ConsensusRendered(uint256 indexed canvasId, uint16 agreed, uint16 panelSize);
     event CollaborationRequested(bytes32 indexed claimId, uint256 indexed a, uint256 indexed b);
     event CollaborationConfirmed(bytes32 indexed claimId);
     event LegacyProofsEnabled(bool enabled);
@@ -236,6 +255,14 @@ contract ProofCanvas is ERC721, Ownable2Step {
         if (IMDOracleV2.recover(a, signature) != oracleSigner) revert OracleSignatureInvalid();
         claim.used = true;
         consumedOracleRequests[a.requestId] = true;
+        nativeReceipts[claim.workId] = NativeReceipt({
+            canvasA: claim.canvasId, canvasB: 0, evidenceHash: claim.evidenceHash,
+            questionHash: claim.questionHash, requestId: a.requestId, issuedAt: a.issuedAt,
+            panelSize: a.panelSize, quorum: a.quorum, agreed: a.agreed
+        });
+        lastPanelSize[claim.canvasId] = a.panelSize;
+        lastPanelAgreed[claim.canvasId] = a.agreed;
+        emit ConsensusRendered(claim.canvasId, a.agreed, a.panelSize);
         _applyWork(claim.canvasId, claim.workId, claim.evidenceHash, claim.category, uint256(a.requestId));
         emit OracleReceiptVerified(claimId, a.requestId, a.agreed, a.quorum);
     }
@@ -282,12 +309,23 @@ contract ProofCanvas is ERC721, Ownable2Step {
         c.used = true;
         consumedWork[c.workId] = true;
         consumedOracleRequests[a.requestId] = true;
+        nativeReceipts[c.workId] = NativeReceipt({
+            canvasA: c.a, canvasB: c.b, evidenceHash: c.evidenceHash,
+            questionHash: c.questionHash, requestId: a.requestId, issuedAt: a.issuedAt,
+            panelSize: a.panelSize, quorum: a.quorum, agreed: a.agreed
+        });
         collaborating[c.a][c.b] = true;
         collaborating[c.b][c.a] = true;
         canvas[c.a].history = keccak256(abi.encode(canvas[c.a].history, "IMD_COLLAB_V2", c.workId, c.evidenceHash, c.b));
         canvas[c.b].history = keccak256(abi.encode(canvas[c.b].history, "IMD_COLLAB_V2", c.workId, c.evidenceHash, c.a));
         canvas[c.a].lastUpdate = uint64(block.timestamp);
         canvas[c.b].lastUpdate = uint64(block.timestamp);
+        lastPanelSize[c.a] = a.panelSize;
+        lastPanelAgreed[c.a] = a.agreed;
+        lastPanelSize[c.b] = a.panelSize;
+        lastPanelAgreed[c.b] = a.agreed;
+        emit ConsensusRendered(c.a, a.agreed, a.panelSize);
+        emit ConsensusRendered(c.b, a.agreed, a.panelSize);
         emit Collaboration(c.a,c.b,c.workId);
         emit OracleReceiptVerified(claimId,a.requestId,a.agreed,a.quorum);
         emit MetadataUpdate(c.a);
@@ -368,31 +406,69 @@ contract ProofCanvas is ERC721, Ownable2Step {
         if (canvas[id].frozen || archived[id]) revert ArchivedOrFrozen();
     }
 
-    /// @notice SVG is self-contained onchain and intentionally complexity bounded.
+    /// @notice Four deterministic visual grammars: Orbit, Vessel, Lattice, Fracture.
+    /// @dev Render complexity capped; disagreement comes from signed panelSize/agreed.
     function svgOf(uint256 id) public view returns (string memory) {
         _requireOwned(id);
         Canvas memory c = canvas[id];
         bytes memory art = abi.encodePacked(
             '<svg xmlns="http://www.w3.org/2000/svg" width="800" height="800" viewBox="0 0 800 800">',
-            '<rect width="800" height="800" fill="#0b0c10"/>',
-            '<circle cx="400" cy="400" r="220" stroke="#575d69" stroke-width="1" fill="none"/>',
-            '<circle cx="400" cy="400" r="12" fill="#e6d0a2"/>'
+            '<rect width="800" height="800" fill="#0b0c10"/>'
         );
-        uint256 count = 8 + uint256(c.proofs) * 2;
+        uint256 kind = c.archetype;
+        string memory ink = kind == 0 ? "#d9b981" : kind == 1 ? "#a3c1d6" : kind == 2 ? "#d9ddd5" : "#c398a1";
+        if (kind == 0 || kind == 4) {
+            art=abi.encodePacked(art,
+                '<circle cx="400" cy="400" r="254" stroke="',ink,'" fill="none" stroke-width="1"/>',
+                '<circle cx="400" cy="400" r="178" stroke="',ink,'" fill="none" opacity=".45"/>');
+        } else if (kind == 1) {
+            art=abi.encodePacked(art,
+                '<path d="M260 230 Q400 72 540 230 L604 580 Q400 719 196 580 Z" stroke="',ink,'" fill="none" stroke-width="1.4"/>');
+        } else if (kind == 2) {
+            art=abi.encodePacked(art,
+                '<path d="M138 138 L662 138 L662 662 L138 662 Z M138 400 L662 400 M400 138 L400 662" stroke="',ink,'" fill="none" opacity=".65"/>');
+        } else {
+            art=abi.encodePacked(art,
+                '<path d="M425 82 L347 286 L478 408 L304 702" stroke="',ink,'" fill="none" stroke-width="2"/>');
+        }
+        uint256 count = 12 + uint256(c.proofs) * 2;
         if (count > MAX_RENDER_NODES) count = MAX_RENDER_NODES;
         for (uint256 i; i < count; ++i) {
-            uint256 h = uint256(keccak256(abi.encode(c.dna, c.history, i)));
-            uint256 x = 85 + (h % 631);
-            uint256 y = 85 + ((h >> 32) % 631);
-            string memory ink = i % 4 == 0 ? "#e4c48b" : "#9baad1";
-            art = abi.encodePacked(art,
-                '<line x1="400" y1="400" x2="', x.toString(), '" y2="', y.toString(),
-                '" stroke="', ink, '" stroke-width="1.5" opacity=".65"/>',
-                '<circle cx="', x.toString(), '" cy="', y.toString(),
-                '" r="', (2 + h % 5).toString(), '" fill="', ink, '"/>'
-            );
+            uint256 h = uint256(keccak256(abi.encode(c.dna,c.history,i)));
+            uint256 x = 100 + h % 600;
+            uint256 y = 100 + (h >> 24) % 600;
+            if (kind == 0 || kind == 4) {
+                // Radiating orbital chords
+                art = abi.encodePacked(art,'<path d="M400 400 L',x.toString(),' ',y.toString(),
+                    '" stroke="',ink,'" stroke-width=".7" opacity=".7"/>');
+            } else if (kind == 1) {
+                // Vessel filaments and mirrored curves
+                art = abi.encodePacked(art,'<path d="M400 180 Q',x.toString(),' ',y.toString(),
+                    ' 400 620" stroke="',ink,'" stroke-width=".7" fill="none" opacity=".55"/>');
+            } else if (kind == 2) {
+                // Orthogonal intersections, distinct from any orbit or vessel
+                art = abi.encodePacked(art,'<path d="M',x.toString(),' 140 L',x.toString(),
+                    ' 660 M140 ',y.toString(),' L660 ',y.toString(),
+                    '" stroke="',ink,'" stroke-width=".65" opacity=".6"/>');
+            } else {
+                // Broken, offset diagonals
+                art = abi.encodePacked(art,'<path d="M',x.toString(),' ',(y/2).toString(),
+                    ' L',(x/2).toString(),' ',y.toString(),
+                    '" stroke="',ink,'" stroke-width="1" opacity=".75"/>');
+            }
         }
-        return string(abi.encodePacked(art, '</svg>'));
+        uint16 panel=lastPanelSize[id];
+        uint16 agreed=lastPanelAgreed[id];
+        if (panel > agreed) {
+            uint256 scars=uint256(panel-agreed);
+            if (scars > 12) scars=12;
+            for (uint256 i;i<scars;++i) {
+                uint256 dy=245+i*27;
+                art=abi.encodePacked(art,'<path d="M330 ',dy.toString(),
+                    ' L462 ',(dy+30).toString(),'" stroke="#e68c70" stroke-width="2" opacity=".82"/>');
+            }
+        }
+        return string(abi.encodePacked(art,'<circle cx="400" cy="400" r="6" fill="#f3e8cc"/></svg>'));
     }
 
     function tokenURI(uint256 id) public view override returns (string memory) {

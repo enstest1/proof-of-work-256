@@ -12,7 +12,8 @@ contract AdditionalFuzzTest is Test {
         vm.prank(alice); p.mint(bytes32("alice"));
     }
     function testFuzzOneMintPerWallet(address wallet) public {
-        vm.assume(wallet != address(0) && wallet != alice && wallet != address(vm));
+        wallet = address(uint160(uint256(keccak256(abi.encode("random-collector", wallet)))));
+        vm.assume(wallet != alice && wallet.code.length == 0);
         vm.prank(wallet); p.mint(bytes32("test"));
         vm.prank(wallet); vm.expectRevert(ProofCanvas.MintCap.selector); p.mint(bytes32("test2"));
         assertEq(p.mintCounts(wallet), 1);
