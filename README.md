@@ -12,6 +12,14 @@ A collector-first generative art experiment with a Solidity contract for 256 Gen
 
 **Hackathon submission guide:** [docs/HACKATHON-SUBMISSION.md](docs/HACKATHON-SUBMISSION.md).
 
+## PROOF//TRIAL v5 — live collector experience (October 9, 2026)
+
+**Production gallery:** https://collector-gallery-production.up.railway.app/?canvas=42#trial — working two-future comparison, five-chapter cinematic Birth replay, interactive mark-to-role X-Ray, historical concept scrubber, exportable vector SVG, shareable canvas link and 256-node Commons. The website explicitly marks all imagined agent outcomes, provenance and connections **SIMULATED/UNVERIFIED**. Actual IMD network health is real public telemetry and is not evidence of work attributed to our NFTs.
+
+**Source/test status:** root Foundry ERC-721 contracts unchanged from the 47-test release, full GitHub Actions pipeline also runs 18 Node tests and syntax checks; Chrome desktop/mobile interaction QA passed without page errors or horizontal scrolling. Unpaid IMD DAG job quote was accepted at 0.5 IMD; it was not paid or executed. A public mainnet deployment, paid IMD job, consumer-bound oracle proof, independent production audit, and Radar entry are still outstanding.
+
+**Read:** [V5 implementation & remaining authenticity gates](docs/EXPERIENCE-V5.md) · [Collector changes](V5-CHANGELOG.md) · [Hackathon submission](docs/HACKATHON-SUBMISSION.md).
+
 ## Exact project status
 
 | Component | Status |
