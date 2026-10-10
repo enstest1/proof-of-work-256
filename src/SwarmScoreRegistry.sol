@@ -10,6 +10,7 @@ pragma solidity ^0.8.24;
 interface IProofCanvasScore {
     function ownerOf(uint256 id) external view returns (address);
     function consumedWork(bytes32 workId) external view returns (bool);
+    function nativeReceiptSourceChainId(bytes32 workId) external view returns (uint256);
     function nativeReceipts(bytes32 workId) external view returns (
         uint256 canvasA, uint256 canvasB, bytes32 evidenceHash,
         bytes32 questionHash, bytes32 requestId, uint64 issuedAt,
@@ -33,7 +34,8 @@ contract SwarmScoreRegistry {
         bool finalized;
     }
     mapping(bytes32 => Score) public scores; // workId => committed score
-    mapping(bytes32 => bool) public committedJobs; // job must have exactly one score
+    mapping(bytes32 => bool) public committedJobs;
+    mapping(bytes32 => uint256) public scoreSourceChainId; // job must have exactly one score
 
     event ScoreCommitted(
         bytes32 indexed workId, bytes32 indexed jobId, uint256 indexed canvasA,
@@ -89,6 +91,7 @@ contract SwarmScoreRegistry {
         }
         root = canonicalRoot(sourceChainId, canvasA, canvasB, jobId, policyHash, seatIds, recordHashes);
         scores[workId] = Score(canvasA,canvasB,jobId,root,policyHash,questionHash,uint64(block.timestamp),false);
+        scoreSourceChainId[workId] = sourceChainId;
         committedJobs[jobId] = true;
         emit ScoreCommitted(workId,jobId,canvasA,canvasB,root,policyHash,questionHash,seatIds,recordHashes);
     }
@@ -104,7 +107,8 @@ contract SwarmScoreRegistry {
         ) = canvas.nativeReceipts(workId);
         if (req == 0 || a != s.canvasA || b != s.canvasB ||
             evidence != s.manifestRoot || question != s.questionHash ||
-            issuedAt < s.committedAt || panel == 0 || agreed < quorum
+            issuedAt < s.committedAt || panel == 0 || agreed < quorum ||
+            canvas.nativeReceiptSourceChainId(workId) != scoreSourceChainId[workId]
         ) revert AttestationMismatch();
         s.finalized = true;
         emit ScoreFinalized(workId,req,s.manifestRoot,agreed,panel,quorum);

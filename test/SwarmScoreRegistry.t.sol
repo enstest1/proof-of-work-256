@@ -109,6 +109,20 @@ contract SwarmScoreRegistryTest is Test {
         registry.commitScore(keccak256("other-work"),JOB,POLICY,QUESTION,1,1,0,ids,rec);
     }
 
+    function testSourceChainMismatchRejected() public {
+        (bytes32[4] memory ids,bytes32[4] memory records)=seats();
+        bytes32 root=registry.canonicalRoot(2,1,0,JOB,POLICY,ids,records);
+        vm.prank(ALICE);
+        bytes32 claimId=p.registerOracleClaim(1,1,WORK,root,keccak256("swarm-score"),QUESTION);
+        vm.prank(ALICE);
+        registry.commitScore(WORK,JOB,POLICY,QUESTION,2,1,0,ids,records);
+        vm.warp(block.timestamp+2);
+        IMDOracleV2.Attestation memory a=_attestation();
+        p.acceptOracleProof(claimId,a,_signed(a));
+        vm.expectRevert(SwarmScoreRegistry.AttestationMismatch.selector);
+        registry.finalizeScore(WORK);
+    }
+
     function testEvidenceMismatchCannotFinalize() public {
         (,bytes32 claimId)=_commit();
         // A correctly signed IMD result for a separate native receipt cannot
