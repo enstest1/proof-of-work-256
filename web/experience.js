@@ -138,6 +138,7 @@
     byId('commonsView').addEventListener('change',renderCommons);
   }
   function renderCommons(){
+    if(root.ProofCivilization?.isActive){root.ProofCivilization.selectCanvas(canvasId);return;}
     const host=byId('commonsCanvas');if(!host)return;
     const compact=byId('commonsView').value==='constellation';
     let links='',nodes='';
