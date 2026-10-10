@@ -1,0 +1,19 @@
+/* MATH ATELIER / deliberately independent of future onchain proofs */
+.atelier{background:radial-gradient(ellipse at 75% 25%,#17202a 0,#0c1118 57%,#090b0e 100%);border-top:1px solid #313942}
+.atelier-header{display:flex;align-items:flex-end;justify-content:space-between;gap:32px}.atelier-header p{max-width:720px;line-height:1.8;color:#aebbc8}
+.atelier-tag{border:1px solid #766446;color:#dec396;padding:12px 16px;font:10px 'DM Mono',monospace;letter-spacing:1px}
+.atelier-layout{display:grid;grid-template-columns:minmax(0,1.33fr) minmax(290px,.67fr);border:1px solid #48505b;margin-top:30px}
+.atelier-screen{min-width:0;position:relative;overflow:hidden;background:#080b10;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center}.atelier-screen svg{width:100%;height:100%;display:block}.atelier-screen::after{position:absolute;content:'';inset:0;pointer-events:none;box-shadow:inset 0 0 70px #07090b44}
+.atelier-console{padding:26px;background:#11171e;border-left:1px solid #48505b;display:flex;flex-direction:column;gap:14px}
+.atelier-console .atelier-panel-label{font:11px 'DM Mono',monospace;letter-spacing:1.7px;color:#d7bb84}
+.atelier-console h3{font-size:23px;margin:0;letter-spacing:1px}.atelier-console p{font-size:12px;line-height:1.75;color:#a8b4c1}
+.atelier-controls{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.atelier-field{display:flex;flex-direction:column;min-width:0;gap:7px}.atelier-field label{font:10px 'DM Mono',monospace;letter-spacing:.8px;color:#d0bb94}
+.atelier-field select,.atelier-field input{background:#0c1219;border:1px solid #49535e;border-radius:0;color:#e7e2d6;font-size:14px;width:100%;padding:12px;min-width:0}.atelier-field.wide{grid-column:span 2}
+.atelier-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px}.atelier-actions button{min-height:42px;white-space:normal;font:10px 'DM Mono',monospace;letter-spacing:.5px;padding:9px}
+.atelier-actions .gold{background:#ddc79f;border:1px solid #ddc79f;color:#12151a}.atelier-actions .outlined{background:transparent;color:#e4dccd;border:1px solid #65717d}
+.atelier-actions button:hover{filter:brightness(1.15)}.atelier-stats{font:10px 'DM Mono',monospace;letter-spacing:.3px;color:#94a8b9;line-height:1.6;border-top:1px solid #3b4651;margin-top:4px;padding-top:13px}
+.atelier-presets{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-top:20px}.atelier-card{min-width:0;background:#0d1219;border:1px solid #3c4653;padding:7px 7px 13px;cursor:pointer;color:#e6d8b4;text-align:left}.atelier-card svg{width:100%;aspect-ratio:1;display:block}.atelier-card span{display:block;padding:5px 6px;font:10px 'DM Mono',monospace;letter-spacing:1.1px}.atelier-card:hover,.atelier-card:focus-visible{border-color:#c5ae84}
+.atelier-note{color:#aab5bf;font:12px 'DM Mono',monospace;line-height:1.8;margin-top:20px}.atelier-note a{color:#dfc393;text-decoration:underline}
+@media(max-width:1100px){.atelier-layout{grid-template-columns:1fr}.atelier-console{border-left:0;border-top:1px solid #48505b}.atelier-screen{max-height:850px}.atelier-presets{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:700px){.atelier-header{display:block}.atelier-console{padding:16px}.atelier-presets{grid-template-columns:repeat(2,1fr)}.atelier-card:last-child{grid-column:span 2}.atelier-layout{margin-top:20px}.atelier-actions{grid-template-columns:1fr 1fr}}
