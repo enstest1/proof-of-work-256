@@ -1,9 +1,9 @@
 {
   "deployed": false,
-  "chainId": 11155111,
-  "chainName": "Sepolia",
+  "chainId": 4663,
+  "chainName": "Robinhood Chain (mainnet target — not deployed)",
   "proofCanvasAddress": null,
-  "explorer": "https://sepolia.etherscan.io",
+  "explorer": "https://robinhoodchain.blockscout.com",
   "imdLaunchId": null,
   "nativeOracleSigner": null,
   "verifiedSourceCommit": null,

@@ -22,6 +22,14 @@ A collector-first generative art experiment with a Solidity contract for 256 Gen
 
 **Read:** [V5 implementation & remaining authenticity gates](docs/EXPERIENCE-V5.md) · [Collector changes](V5-CHANGELOG.md) · [Hackathon submission](docs/HACKATHON-SUBMISSION.md).
 
+## THE LIVING CIVILIZATION — flagship release (October 10, 2026)
+
+Two complementary directions are maintained: **Flagship A = PROOF//OF//SURVIVAL** (adversarial work, scars, repair, trial) and **Flagship B = THE LIVING CIVILIZATION** (one generative exhibition of 256 individual artistic identities, four cultures and a shared history).
+
+The new public atlas has five simulated eras, deterministic procedural world geometry, four cultural filters, click-to-inspect identities, an event-based art concept and a published [honest roadmap](docs/CONCEPT-ROADMAP.md). Every illustrated edge is marked **unverified** until an accepted genuine onchain oracle-backed collaboration exists; this build does not mint, broadcast, or misrepresent activity.
+
+**Robinhood testnet 46630:** real read-only RPC checks and a non-broadcast Foundry deployment/fork smoke are described in [testnet readiness](docs/TESTNET-READINESS.md). A future authentic graph indexer lives in `scripts/civilization-index.mjs` and refuses to invent links. Wallet-funded deployment and a real IMD oracle receipt remain gates to a fully live civilization. The production manifest remains `deployed:false`, `mintingEnabled:false`.
+
 ## Exact project status
 
 | Component | Status |

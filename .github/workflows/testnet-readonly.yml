@@ -1,0 +1,38 @@
+name: Robinhood Testnet Readonly Checks
+on:
+  push:
+    branches: [feat/civilization-v6, main]
+  pull_request:
+  workflow_dispatch:
+jobs:
+  network:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Read-only network chain, block, RPC checks
+        run: node scripts/testnet-preflight.mjs
+  fork-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 9
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+      - uses: foundry-rs/foundry-toolchain@v1
+        with:
+          version: v1.8.5
+      - name: Install contract dependencies
+        run: |
+          forge install --no-commit OpenZeppelin/openzeppelin-contracts@dbb6104ce834628e473d2173bbc9d47f81a9eec3
+          forge install --no-commit foundry-rs/forge-std@0258fe875e1d8e207c1eb7175e542ea32356773c
+      - name: Simulate constructor and registry against live testnet state without broadcasting
+        env:
+          PROOF_OWNER: '0x000000000000000000000000000000000000bEEF'
+        run: |
+          forge script script/DeployTestnet.s.sol:DeployTestnet \
+            --rpc-url https://rpc.testnet.chain.robinhood.com \
+            --sender 0x000000000000000000000000000000000000bEEF \
+            -vv

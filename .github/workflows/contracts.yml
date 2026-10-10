@@ -23,4 +23,7 @@ jobs:
           node --test tests/*.test.mjs
           node --check web/app.js
           node --check web/experience.js
+          node --check web/civilization.js
+          node --check scripts/testnet-preflight.mjs
+          node --check scripts/civilization-index.mjs
           node --check scripts/verify-swarm-score.mjs

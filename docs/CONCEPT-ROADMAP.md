@@ -1,17 +1,17 @@
 # PROOF//OF//WORK — Experimental Concepts Roadmap
 **Documented October 10, 2026 · Concept planning only · Hackathon deadline October 21, 2026**
 
-Seven original concept directions were brainstormed. **Being listed here does not mean built, deployed, authenticated by IMD, audited, or submitted.** Related front-end previews currently exist, but they are clearly labeled simulations; the contracts have no public mainnet deployment.
+Seven concept directions underpin two flagship experiences: **A: PROOF//OF//SURVIVAL** and **B: THE LIVING CIVILIZATION**. Both are being developed, but **being listed here does not mean deployed, authenticated by IMD, audited, or submitted.** Related front-end previews currently exist, but they are clearly labeled simulations; the contracts have no public mainnet deployment.
 
 | Concept | Originality potential (subjective) | Estimated build difficulty | Priority | Actual implementation state |
 | --- | --- | --- | --- | --- |
-| **1. THE GAUNTLET** | Very high | Medium | First | **Not built.** Existing Proof-of-Dissent records signed panel disagreement but does not define a verified attack–defense–repair lifecycle. |
-| **2. PROOF OF CAUSALITY** | Very high | Medium | First | **Partial foundation.** Role-mark X-Ray preview and signed panel-dissent layer exist. Actual onchain *per-mark* mapping to measured accepted outcomes remains unimplemented. |
-| **3. THE WITNESS** | High | Medium | First | **Concept demo.** Cinematic Birth shows five clearly simulated phases. No live IMD work records are streaming into authentic onchain evolutions. |
-| **4. GHOST TIMELINES / FORKED REALITY** | High | Medium | Second | **Concept demo.** Two deterministic proposed futures can be compared. No permanent proof-backed alternative branches or owner-signed canonical choice. |
-| **5. SYMBIOSIS / SWARM//TWINS** | High | High | Second | **Partial contract foundation.** Two-owner native collaboration exists; pairing-specific art and an authentic complementary two-owner exhibition require work and verified receipts. |
-| **6. THE LAST TRIAL** | Very high | High | Later | **Not built.** One-time major final challenge, immutable graduation policy and Masterwork result would require new audited contract states. |
-| **7. THE CIVILIZATION** | Very high | Very high | Long-term | **Concept demo.** The Commons shows 256 nodes and conceptual links. No autonomous civilization, independently controlled objectives, onchain world topology, or actual societal simulation exists. |
+| **1. THE GAUNTLET** | Very high | Medium | First | **Survival roadmap.** Existing Proof-of-Dissent records signed panel disagreement but does not define a verified attack–defense–repair lifecycle. |
+| **2. PROOF OF CAUSALITY** | Very high | Medium | First | **Survival roadmap / partial foundation.** Role-mark X-Ray preview and signed panel-dissent layer exist. Actual onchain *per-mark* mapping to measured accepted outcomes remains unimplemented. |
+| **3. THE WITNESS** | High | Medium | First | **Survival concept demo.** Cinematic Birth shows five clearly simulated phases. No live IMD work records are streaming into authentic onchain evolutions. |
+| **4. GHOST TIMELINES / FORKED REALITY** | High | Medium | Second | **Roadmap concept demo.** Two deterministic proposed futures can be compared. No permanent proof-backed alternative branches or owner-signed canonical choice. |
+| **5. SYMBIOSIS / SWARM//TWINS** | High | High | Second | **Roadmap / partial contract foundation.** Two-owner native collaboration exists; pairing-specific art and an authentic complementary two-owner exhibition require work and verified receipts. |
+| **6. THE LAST TRIAL** | Very high | High | Later | **Survival long-term roadmap.** One-time major final challenge, immutable graduation policy and Masterwork result would require new audited contract states. |
+| **7. THE CIVILIZATION** | Very high | Very high | Long-term | **Flagship B demo now developed.** Interactive 256-node world atlas, four cultures, five illustrative eras, filtering and selected-artwork inspector are implemented in the frontend. It is not yet an autonomous onchain civilization; all displayed network links are unverified visual concepts. |
 
 ## Mechanics / distinctions
 
@@ -51,3 +51,10 @@ The Commons becomes a real collaboration graph. Every edge must be traceable to 
 **THE MULTIVERSE:** Ghost Timelines + competing futures + irreversible collector choice.
 
 Collection vision: 256 visually collectible identities with a real, inspectable history of independently checked swarm work, where collaborative actions gradually create one shared artwork. **All originality and effort ratings above are design hypotheses, not empirically validated scores.**
+
+## Flagship strategy — October 10, 2026
+
+- **Flagship A: PROOF//OF//SURVIVAL.** The Gauntlet, Proof of Causality, and The Witness are the core engineering direction; the Last Trial remains post-release until separately assessed. No onchain attack/repair truth is claimed yet.
+- **Flagship B: THE LIVING CIVILIZATION.** The world and its four archetypal cultures are now a first-class, explorable site experience; population 256 is a fixed Genesis collection design, not an issued supply. Every proposed social event is marked hypothetical and no invented collaborations are shown as verified.
+- **Remaining roadmap:** Ghost Timelines, Symbiosis / paired collector art, irrevocable masterwork mechanics, and full autonomous societal evolution. Their work estimates are hypotheses. No promised airdrops, financial returns, floor prices, artificial scarcity windows, or guaranteed release dates.
+- **Actual next engineering gate:** Robinhood Chain **testnet ID 46630** network and deployment validation, independently audited contract, then real wallet-authorized IMD project launch / authentic oracle claim and final Radar submission. A testnet deployment is not a qualifying mainnet IMD launch.
