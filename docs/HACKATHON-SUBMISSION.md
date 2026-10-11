@@ -1,13 +1,13 @@
 # PROOF//OF//WORK — IMD Hackathon Submission Runbook
 
-**Status: PREVIEW LIVE; NOT SUBMITTED; NO CONTRACT DEPLOYED**  
+**Status: PREVIEW LIVE; Robinhood TESTNET contracts deployed and Genesis #1 minted; no MAINNET contract, no paid IMD job; NOT SUBMITTED**
 **Deadline:** October 21, 2026 (per event announcement; verify exact timezone with organizers).
 
 ## Verified resources
 
 - Gallery/demo: https://collector-gallery-production.up.railway.app/
 - Repository: https://github.com/enstest1/proof-of-work-256 (public source verified; Solidity CI passing)
-- Onchain contract: PENDING IMD launch and chain verification
+- Testnet onchain contracts: ProofCanvas 0x15DD7ebd24E0F166B66DD822f38D9BA6b9321632; SwarmScoreRegistry 0x0936b5F2fc2c561f9607Da331F650C93bbaE3695 (chain 46630). Mainnet launch is PENDING. See [real testnet evidence](TESTNET-DEPLOYMENT-2026-10-10.md).
 - IMD launch ID: PENDING
 - Dedicated project X account: MUST BE CREATED/CONFIRMED
 - Submission: https://www.imdradar.site/hackathon
@@ -32,7 +32,7 @@ PROOF//OF//WORK: THE 256 is an ERC-721 generative art protocol built around veri
 
 ## Critical disclosure
 
-The Railway site is a gallery DEMO, not an onchain mint. Its SVG preview is not byte-for-byte identical with `ProofCanvas.svgOf`, and Genesis DNA allocation is deterministic by token ID, not unbiased randomness. A full public collector mint requires art parity, fairness review, security review and an authentic deployment-bound IMD oracle test. Unit/fuzz tests alone do not provide an independent audit.
+The Railway site is a gallery DEMO, not a production onchain mint. A separate real testnet Genesis #1 mint was verified; production minting is disabled. Its SVG preview is not byte-for-byte identical with `ProofCanvas.svgOf`, and Genesis DNA allocation is deterministic by token ID, not unbiased randomness. A full public collector mint requires art parity, fairness review, security review and an authentic deployment-bound IMD oracle test. Unit/fuzz tests alone do not provide an independent audit.
 
 ## Prize-deployer address caveat (must resolve before entering contract)
 
