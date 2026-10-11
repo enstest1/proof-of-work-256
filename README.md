@@ -1,6 +1,8 @@
 # PROOF//OF//WORK — THE 256
 
-**Tested engineering candidate · October 9, 2026 · Public demo live · No onchain mint**
+**Tested engineering candidate · October 9, 2026 · Public demo live · No mainnet mint**
+
+**NEW - Robinhood testnet deployment (October 10, 2026):** Real ERC-721 and SwarmScoreRegistry contracts deployed on chain 46630, and **Genesis #1 was actually minted**. Inline SVG/tokenURI verified, and minting was closed again afterward. See [public contract addresses and five verified transaction hashes](docs/TESTNET-DEPLOYMENT-2026-10-10.md). This is **testnet-only**; no real IMD jobs, oracle attestation, mainnet deployment, or Radar submission is being claimed.
 
 A collector-first generative art experiment with a Solidity contract for 256 Genesis canvases, attested work receipts, collaboration edges, irreversible freeze, and a 16-Monument ceiling. Includes a responsive self-contained gallery prototype and a Foundry test suite.
 
